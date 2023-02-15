@@ -1,0 +1,33 @@
+{
+    "nome": "Marcos",
+    "cidade": "Rio de Janeiro",
+    "Telefone": 999999909,
+    "Livros": [
+        "livro1",
+        "livro2",
+        "livro3",
+        "livro4"
+    ],
+    "hobbies": {
+        "esporte": "futebol",
+        "entretenimento": {
+            "filmes": {
+                "streaming": [
+                    "filme1",
+                    "filme2",
+                    "filme3"
+                ],
+
+                "cinema": [
+                    "filmeA",
+                    "filmeB",
+                    "filmec"
+                ]
+            }
+        }
+    },
+    "outros": [
+        "estudante de desenvolvimento web"
+    ] 
+}    
+        
