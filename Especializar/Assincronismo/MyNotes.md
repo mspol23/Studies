@@ -161,6 +161,117 @@ promessa
 // resolve e reject podem ser substituídos por qualquer variável, mas a boa prática recomenda o uso destas expressões porque fazem sentido.
 ```
 
+### Promessas sequenciais
+
+O comando 'fetch' já é reconhecido pelo sistema como uma 'Promise', e aceita seus métodos '.then', '.catch' e '.finally'. 
+
+```js
+fetch('https://api.github.com/users/mspol23')
+.then(resp1 => resp1.json())
+.then(resp2 => fetch(resp2.repos_url))
+.then(resp3 => resp3.json())
+.then(resp4 => console.log(resp4[0].language))
+```
+
+Não há, portanto, necessidade de ser escrito da seguinte maneira. A forma acima é mais limpa e surte o mesmo efeito.
+
+```js
+fetch('https://api.github.com/users/mspol23')
+.then(resp1 => {
+    resp1.json()
+        .then(resp2 => {fetch(resp2.repos_url)
+            .then(resp3 => {resp3.json()
+            .then(resp4 => {console.log(resp4[0].language)
+            })
+        })
+    })
+})
+```
+
+## Axios
+
+https://axios-http.com/
+
+ferramenta que funciona como uma Promise.
+
+Abaixo, o exemplo dado:
+
+```js
+import axios from "axios";
+axios.get('https://api.github.com/users/mspol23')
+.then(res => {
+    console.log(res);
+});
+```
+
+### Axios (aula 2)
+
+Axios é um objeto.
+
+```js
+axios.get('https://api.github.com/users/mspol23')
+```
+o comando acima funciona como uma promessa. Se toda a expressão acima, com o devido argumento, for colocada dentro do comando console.log(), ver-se-á no console do navegador que se trata de uma promessa pendente - Promise {<pending>}.
+
+Na promessa o método '.then' especifica uma função a ser executada em caso de sucesso na sua conclusão.
+
+```js
+.then(response => console.log(response))
+```
+
+O método para capturar a resposta da promessa em caso de erro é o '.catch'
+
+```js
+.catch(erro => console.log(erro))
+```
+### axios (aula 3)
+
+Execução de promessas concorrentes, ao mesmo tempo.
+
+Ambas são agrupadas e a resposta é entregue concomitantemente.
+
+Ex.:
+```js
+import axios from 'axios'
+
+Promise.all([
+  axios.get('https://api.github.com/users/mspol23'),
+  axios.get('https://api.github.com/users/mspol23/repos')
+])
+
+.then( responses => {
+  console.log(responses[0].data.login)
+  console.log(responses[1].data[0].id)
+})
+```
+## Async / Await
+
+Forma alternativa de se escrever promessas.
+
+Seu tipo de sitaxe recebe a donominação de 'Syntactic Sugar'.
+
+A variável promessa, neste caso, seria um objeto.
+
+```js
+const promessa = new Promise( function( resolve, reject) {
+  return resolve('ok')
+})
+
+async function start() {
+  try {
+  const result = await promessa
+  console.log(result)
+  } catch( error ) {
+    console.error('Não funcionou!')
+  } finally {
+    console.log('Rodar sempre!')
+  }
+}
+start()
+```
+
+
+
 
 
 

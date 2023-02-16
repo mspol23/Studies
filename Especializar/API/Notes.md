@@ -49,3 +49,15 @@ O arquivo JSON aceita string, números, arrays e objetos.
     ] 
 }   
 ```
+## Requisições HTTP
+
+- GET - fornece informações.
+- POST - recebe informações que devem ou não ser publicadas.
+- DELETE - API recebe identificadores de registros que devem ser apagados.
+- PUT - API recebe informações para update de um ou mais registros.
+- PUSH - API recebe informações para update de um registro.
+
+### Programa Insomnia.
+
+Será utilizado porque navegador só aceita requisições do tipo GET.
+
