@@ -1,0 +1,58 @@
+# Bordas
+
+```html
+<DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>CSS Bordas</title>
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            div {
+                width: 200px;
+                height: 200px;
+                background: blue;
+
+                /*Borda - verbosa*/
+                /*border-width: 15px;
+                border-style: outset;
+                border-color: green;*/
+                
+                /*Borda - shorthand*/
+                border: 20px solid #000;
+
+                /*Radius - verboso*/
+                /* border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius:  10px; */
+                
+                /*Radius - shorthand*/
+                border-radius: 10px 50px 10px 50px;
+                /* Se informarmos apenas um valor, o shorthand o aplicará em todas bordas.
+                
+                Se informarmos o valor 100%, a caixa se tornará um círculo. */
+
+
+
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div></div>
+
+    </body>
+
+</html>
+
+```
+
