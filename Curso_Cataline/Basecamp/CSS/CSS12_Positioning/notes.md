@@ -73,7 +73,8 @@ position: absolute;
 </head>
 <body>
 
-    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, ducimus commodi fugiat sit voluptate reprehenderit? Inventore, dolores! Laboriosam expedita, dolorem asperiores, vitae minus, dolore deleniti quo atque ad illum ducimus?</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, ducimus commodi fugiat sit voluptate reprehenderit? Inventore, dolores! Laboriosam expedita, dolorem asperiores, vitae minus, dolore deleniti quo atque ad illum ducimus?
+    </h1>
 
     <div></div>
 
