@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background: green;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+        }
+
+        .box {
+            background: lightskyblue;
+        }
+
+        .boxWithBorder {
+            box-sizing: border-box;
+            border: black 5px solid;
+        }
+
+        /* Para selecionar uma tag específica podemos unir suas classes até torná-la única. No caso, poderíamos selecionar pela classe única ".radiusBorder", mas é possível fazer da forma abaixo se houver necessidade */
+
+        div.box.radiusBorder {
+            border-radius: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box radiusBorder"></div>
+    <div class="box boxWithBorder"></div>
+    <div class="box"></div>
+</body>
+</html>
