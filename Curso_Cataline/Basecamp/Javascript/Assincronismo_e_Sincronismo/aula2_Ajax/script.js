@@ -10,9 +10,9 @@ console.log(button)
 
 button.addEventListener('click', function () {
     var xhr = new XMLHttpRequest()
-
+    
     xhr.open('GET', 'https://api.github.com/users') // abre uma requisição do conteúdo da url
-    xhr.send() // caso utilizássemos o método PUT para incluir um novo usuário no arquivo json, o .send conteria o valor a ser inserido, mas nesse caso, como o método utilizado é GET (apenas para obter) ficará vazia, sem parâmetro.
+    xhr.send() // caso utilizássemos o método POST para incluir um novo usuário no arquivo json, p. ex., o .send conteria o valor a ser inserido, mas nesse caso, como o método utilizado é GET (apenas para obter) ficará vazia, sem parâmetro.
 
     // O console nada retorna, mas na aba Network enxergamos a nossa requisição com o nome 'users'. Ao clicarmos em users, conseguimos ver informações mais específicas e na aba 'Resposta' está a resposta da nossa requisição.
 
@@ -30,7 +30,11 @@ button.addEventListener('click', function () {
             var data = JSON.parse(xhr.responseText)
 
             console.log(data[0].login) // Retornará o login do primeiro usuário da resposta.
+
+            
         }
     }
 })
+
+
 
