@@ -682,7 +682,138 @@ console.log(hb20)
     worker.name = 'Pedro' // Conseguimos alterar.
 
     console.log(worker)
+}
 
+// Métodos estáticos
+
+{
+    class Person {
+        constructor(firstName, secondName) {
+            this.firstName = firstName,
+            this.secondName = secondName
+        }
+
+        get fullName() {
+            return `${this.firstName} ${this.secondName}`
+        }
+    }
+
+    const person = new Person('Marcos', 'Oliveira')
+
+    console.log(person.fullName)
+    
+}
+
+{
+    class Person {
+        constructor(firstName, secondName) {
+            this.firstName = firstName,
+            this.secondName = secondName
+        }
+
+        get fullName() {
+            return `${this.firstName} ${this.secondName}`
+        }
+
+        static joinNames(firstName, secondName) {
+            return `${firstName} ${secondName}`
+        }
+    }
+
+    const person = Person.joinNames('Marcos', 'Santos')
+
+    console.log(person.fullName)
+    console.log(Person.joinNames('Marcos', 'Santos'))
+    
+}
+
+// Herança
+
+// A classe específica hesda métodos da classe genérica.
+
+{
+    // Classe genérica:
+
+    class Vehicle {
+        constructor(wheels) {
+            this.wheels = wheels
+        }
+
+        acelerate() {
+            console.log('Acelerando!')
+        }
+    }
+
+    // Classe específica, importando funcionalidades da genérica:
+
+    class Moto extends Vehicle {
+        
+        cram() {
+            console.log('Empinando!')
+        }
+
+        // Sobrescrevendo método herdado: basta criar um método homônimo na classe herdeira.Se quisermos utilizar os dois, basta utilizar o recurso 'super'.
+        // Ex.:
+        acelerate() {
+            super.acelerate()
+            console.log('Velocidade da luz.')
+        }
+
+    }
+
+    const civic = new Vehicle(4)
+
+    // console.log(civic)
+
+    // civic.acelerate()
+
+    const bross = new Moto()
+
+    // bross.cram()
+
+    bross.acelerate()
+
+}
+
+// Criando construtor para a classe Moto.
+
+{
+    class Vehicle {
+        constructor(wheels, fuel) {
+            this.wheels = wheels
+            this.fuel = fuel
+        }
+
+        acelerate() {
+            console.log('Acelerando!')
+        }
+    }
+
+    // Para receber os argumentos da função construtora, deve-se utilizar a expressão 'super'.
+
+    class Moto extends Vehicle {
+        constructor(wheels, fuel, helmet) {
+            super(wheels, fuel)
+            this.helmet = helmet
+        }
+        cram() {
+            console.log('Empinando!')
+        }
+
+        usingHelmet() {
+            if (this.helmet) {
+                console.log('Sim, boa viagem!')
+            } else {
+                console.log('Ignição bloqueada.')
+            }
+        }
+    }
+
+    const bross = new Moto(2, gasoline, false)
+
+    console.log(bross.helmet)
+
+    bross.usingHelmet()
 }
 
 
