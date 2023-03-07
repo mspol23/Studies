@@ -222,4 +222,467 @@ console.log(functionName())
 
 // Parâmetro Padrão.
 
+// A partir do ES6 podemos definir atribuir valor padrão aos parâmetros da função
+
+{
+    function sayHello ( name = 'Fulano' ) {
+
+        console.log ( 'Hello ' + name )
+    
+    } 
+    
+    sayHello()
+    
+}
+
+// Neste caso, chamamos a função sem atribuir valor ao parâmetro e, por isso, ele atribuiu o valor pré definido 'Fulano'.
+
+// Esse procedimento também funciona para arrow function.
+
+{
+    const sayHello = (name = 'Fulano') => console.log('hello ' + name )
+
+    sayHello()
+}
+
+// lembrando que também funcionaria desta forma.
+
+{
+    const sayHello = (name = 'Fulano') => {
+        console.log('hello ' + name )
+    }
+
+    sayHello()
+}
+
+// Aula 4
+
+// Template String
+
+// Criar função para imprimir "O valor de camisa é R$ 15, pode comprar!"
+
+{
+    const priceTag = (product, price) => {
+        
+        console.log(`O valor de ${ product.toUpperCase() } é R$${ Math.round(price) }, pode comprar!`)
+    }
+
+    priceTag('bermuda', 15.8)
+}
+
+
+// Aula 5
+
+// Object Short Syntax
+
+// Construir um objeto com as seguintes informações.
+
+// Constantes também podem ser construídas desta forma.
+
+{
+    const name = 'Marcos', age = 45, height = 1.75,isPresent = true
+
+    // Quando a propriedade do objeto tiver o mesmo nome da variável que conterá seu valor, não há necessidade de informar os dois. Ex.: name = name, age = age, etc. Basta fazer o seguinte:
+
+    const person = {
+        name,
+        age,
+        height,
+        isPresent,
+    }
+
+    console.log(person)
+}
+
+
+// Aula 6
+
+// Desestruturação
+
+// Muito utilizada.
+
+{
+
+    // Supomos que queiramos buscar dois elementos em um array
+
+    const fruits = ['Banana', 'Maçã', 'Abacate']
+
+    // a forma abaixo seria o padrão do JS, antes do ES6.
+
+    /* const banana = fruits[0]
+    const apple = fruits[1] */
+
+    // Hoje, podemos fazer assim.
+
+    const [banana, apple] = fruits
+
+    console.log(banana, apple)
+
+}
+
+{
+    // Caso queiramos pular um item do vetor, deixamos sua posição em branco. Ex.:
+
+    const fruits = ['Banana', 'Maçã', 'Abacate']
+
+    const [banana, , avocado] = fruits
+
+    console.log(banana, avocado)
+
+}
+
+// Desestruturação - objetos.
+
+{
+    const person = {
+        name: 'Marcos',
+        familyName: 'Oliveira',
+        age: 40,
+        address: {
+            city: 'Rio de Janeiro',
+            region: 'RJ'
+        },
+    }
+
+    // Chamando propriedades antes do ES6:
+
+    /* const name = person.name
+    const age = person.age
+    const city = person.address.city */
+
+    /* onsole.log(name, age, city) */
+
+    // Desestruturação.
+
+    const {name, familyName, address: { city } } = person
+
+    console.log(name, familyName, city)
+
+}
+
+// Desestruturação e funções.
+
+{
+    const person = {
+        name: 'Marcos',
+        familyName: 'Oliveira',
+        age: 40,
+        address: {
+            city: 'Rio de Janeiro',
+            region: 'RJ'
+        },
+    }
+
+    const personData = (i) => {
+        console.log(`Meu nome é ${i.name} e minha idade é ${i.age} e sou do ${i.address.city}`)
+    }
+
+    personData(person)
+    
+}
+
+// Forma de função desestruturada:
+
+{
+    const person = {
+        name: 'Marcos',
+        familyName: 'Oliveira',
+        age: 40,
+        address: {
+            city: 'Rio de Janeiro',
+            region: 'RJ'
+        },
+    }
+
+    const personData = ( {age, address: { region }, name} ) => console.log(`Tenho ${age}, moro no Estado ${region} e me chamo ${name}.`)
+    
+
+    personData(person)
+    
+}
+
+
+// Aula 8
+
+// Operadores rest / spread
+
+// Ambos são representados com ... 
+
+{
+    const numbers = [ 1, 2, 3, 4, 5 ]
+
+    const [one, two] = numbers
+
+    console.log(one, two)
+
+}
+
+{
+    const numbers = [ 1, 2, 3, 4, 5 ]
+
+    // Para pegar o resto do array.
+
+    const [one, two, ...rest] = numbers
+    const [ ...all] = numbers // pegará todos os valores.
+
+    console.log(one, two, rest)
+
+    console.log(all)
+}
+
+// rest em objetos.
+
+{
+    const person = {
+        name: 'Marcos',
+        age: 40,
+        weight: 95,
+        books: [ 'Monge e o executivo', 'O mínimo que você deve saber para não ser um idiota.'],
+    }
+
+    // Desestruturando.
+
+    const { name, age, ...i } = person
+
+    console.log(name, age, i)
+
+}
+
+// rest aplicado a uma função.
+
+{
+
+    // Criaremos uma função para somar quantos forem os números inseridos como argumentos.
+
+    const sum = ( ...i) => {
+        return i.reduce( (a, b) => a + b)
+    }
+
+    console.log(sum(1, 1, 1, 1, 1, 1, 1))
+
+}
+
+// spread
+
+// Recebemos algum conteúdo para ser alocado em outro lugar.
+
+{
+    const numbers1 = [1, 2, 3, 4, 5]
+    const numbers2 = [6, 7, 8, 9, 10]
+
+    const allNumbers = [ ...numbers1, ...numbers2]
+
+    console.log(allNumbers)
+
+}
+
+// Também funciona com objeto.
+
+
+{
+    const person = {
+        name: 'Marcos',
+        familyName: 'Oliveira',
+        age: 40,
+        address: {
+            city: 'Rio de Janeiro',
+            region: 'RJ'
+        }
+}
+
+    const person1 = {
+        ...person,
+        age: 45
+    }
+
+    console.log(person1)
+
+}
+
+// Aula 9
+
+// Função Construtura.
+
+// Cria itens cuja propriedades se repetem.
+
+{
+const car = {
+    brand: null,
+    price: 0
+}
+
+const civic = car
+civic.brand = 'Honda'
+civic.price = 130
+
+const hb20 = car
+hb20.brand = 'Hyundai'
+hb20.price = 80
+
+const bmw = car
+bmw.brand = 'BMW'
+bmw.price = 200
+
+console.log(hb20)
+console.log(civic)
+console.log(bmw)
+}
+
+// A resposta retorna 3 objetos BMW. A cada atribuição de argumentos, os valores do objeto car são substituídos. Portanto, este modelo não funciona. 
+
+// Devemos, então, criar uma função construtora.
+
+{
+function Car(brand, price) {
+    this.brand = brand,
+    this.price = price
+    console.log(this)
+}
+
+const civic = new Car('Honda', 100)
+const hb20 = new Car('Hb20', 80)
+
+console.log(civic)
+console.log(hb20)
+
+}
+
+// Aula 10
+
+// Classes e seus Métodos (funções -> ações)
+
+// Da forma abaixo, embora não atenda a boa prática, funcionaria.
+
+{
+    function Car(brand, price) {
+        this.brand = brand,
+        this.price = price,
+        this.run = () => console.log('Running')
+    } 
+}
+
+// Forma correta e semântica.
+
+{
+    class Car {
+        constructor(brand, price) {
+            this.brand = brand,
+            this.price = price
+        }
+
+        // A função abaixo, desta forma, funcionará como um método pertencente à classe 'Car'
+
+        run(speed) {
+            console.log(`Velocidade do Civic: ${speed}Km/h`)
+        }
+
+    }
+
+    const civic = new Car ('Honda', 100)
+    console.log(civic)
+    civic.run(150)
+}
+
+// Podemos atribuir valores padrão aos parâmetros da Classe.
+
+{
+    class Car {
+        constructor(brand, price = 50) {
+            this.brand = brand,
+            this.price = price
+        }
+
+        run(speed) {
+            console.log(`Velocidade do Civic: ${speed}Km/h`)
+        }
+
+    }
+
+    const civic = new Car ('Honda') // price assumirá o valor padrão definido na construção da classe.
+
+    console.log(civic)
+}
+
+
+// Aula 11
+
+// get & set.
+
+// Neste caso, estamos construindo um app para uma empresa e se pretende que, após cadastrado, um cliente não possa mais ser excluído.
+
+{
+    class Worker {
+        constructor(name, store) {
+            this.name = name,
+            this.store = store
+        }
+
+    }
+
+    // O seguinte comportamento é indesejado:
+
+    const worker = new Worker('João', 'Centro')
+
+    worker.name = 'Pedro' // O nome pôde ser alterado.
+
+    console.log(worker)
+
+}
+
+// Devemos utilizar '_' antes da propriedade construtora para informar que será privada.
+
+{
+    class Worker {
+        constructor(name, store) {
+            this._name = name,
+            this._store = store
+        }
+
+        // Para permitirmos que esta propriedade seja acessada, criaremos um método 'get'.
+
+        get name () {
+            return this._name 
+        }
+
+    }
+
+    const worker = new Worker('João', 'Centro')
+
+    worker.name = 'Pedro' // Não conseguimos alterar.
+
+    console.log(worker)
+
+}
+
+// Agora pretendemos permitir alteração. Utilizaremos o método 'set'.
+
+{
+    class Worker {
+        constructor(name, store) {
+            this._name = name,
+            this._store = store
+        }
+
+        // Para permitirmos que esta propriedade seja acessada, criaremos um método 'get'.
+
+        get name () {
+            return this._name 
+        } // Este get não recebe parâmetro pois sua finalidade é bloquear alterações.
+
+        // o método 'set' receberá um parâmetro, que será o novo nome.
+
+        set name (newName) {
+            return this._name = newName
+        }
+
+    }
+
+    const worker = new Worker('João', 'Centro')
+
+    worker.name = 'Pedro' // Conseguimos alterar.
+
+    console.log(worker)
+
+}
+
 
